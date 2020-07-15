@@ -22,6 +22,7 @@ public class InternMap<K, V> {
         V existingKey = storage.get(key);
         V newKey = null;
         if (existingKey == null) {
+            // 在HystrixCommandGroupKey中创建了一个HystrixCommandGroupDefault。TODO 作用未知
             newKey = valueConstructor.create(key);
             existingKey = storage.putIfAbsent(key, newKey);
         }
